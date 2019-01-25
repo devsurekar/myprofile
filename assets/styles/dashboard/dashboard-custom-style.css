@@ -1,0 +1,55 @@
+.form-group .required .control-label:after {
+  content:"*";color:red;
+}
+
+.dashboard-message {
+	border-radius: 2em / 5em;   
+    padding: 2px;
+    margin-top:100px; 
+}
+
+.message-success{
+	background-color:#c8e6c9; 
+	color:#2e7d32;
+}
+
+.message-fail{
+	background-color:#ffcdd2; 
+	color:#b71c1c;
+}
+
+.body-back-color{
+	background-color: #FFFFFF;
+}
+
+.content-div{
+	padding-top: 20px;
+}
+
+.top-row{
+	border-top: 2px solid #0275D8;
+	padding-top: 25px;
+	margin-top: 25px;
+}
+
+
+.profile-pic-div{
+	height: 150px; 
+	width: 150px; 
+	margin:auto !important;
+	background-size: cover; 
+	background-repeat: no-repeat; 
+	background-position: center;
+	border: 5px solid!important; 
+	border-color: #f1f1f1!important;
+	padding-top: 20% !important;
+	color: white;
+}
+
+.profile-pic-upload-icon{
+	margin: auto; 	
+	background: rgba(0, 0, 0, 0.5);
+	padding:10px;
+	display:none;
+
+}
