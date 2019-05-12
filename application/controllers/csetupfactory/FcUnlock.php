@@ -10,14 +10,27 @@
 		}
 
 		public function index($strShowForm, $data = NULL ) {
-
  			if( FALSE == checkSession() ) {
+
 	 			if($strShowForm == '$1'){$strShowForm='signin';}
 				$arrmixPassData['strShowFormValue'] = $strShowForm;
 				$arrmixPassData['arrmixValidationError'] = $data;
 				$this->load->view("setupfactory/viewUnlock", $arrmixPassData);
+				
 			} else {
-				$this->load->view("setupfactory/viewDashboard", NULL);
+
+				$this->load->model('setupfactory/ModelDashBoard','dashboard');
+				$this->load->model('setupfactory/ModelProjectDetails','projectdetails');
+				$this->load->model('setupfactory/ModelMessageDetails','messagedetails');
+
+				$arrmixDashBoardData['arrmixDashBoardData'] = $this->dashboard->getDashBoardDetailsByUserId( $this->session->userdata['logged_in']['user_id'] );
+				$arrmixProjectDetails = $this->projectdetails->getProjectDetailsByUserId($this->session->userdata['logged_in']['user_id'] );
+				$arrmixMessageDetails = $this->messagedetails->getMessageDetailsByUserId($this->session->userdata['logged_in']['user_id'] );
+
+				$arrmixDashBoardData ['arrmixProjectDetails']= $arrmixProjectDetails;
+				$arrmixDashBoardData ['arrmixMessageDetails']= $arrmixMessageDetails;
+
+				$this->load->view("setupfactory/viewDashboard", $arrmixDashBoardData);
 			}
 		}
 
@@ -54,7 +67,9 @@
 						redirect('csetupfactory','refresh');
 					}
 			} else {
-				$this->load->view("setupfactory/viewDashboard", NULL);
+				$this->load->model('setupfactory/ModelDashBoard','dashboard');
+				$arrmixDashBoardData['arrmixDashBoardData'] = $this->dashboard->getDashBoardDetailsByUserId( $this->session->userdata['logged_in']['user_id'] );
+				$this->load->view("setupfactory/viewDashboard", $arrmixDashBoardData);
 			}
 		}
 
@@ -67,7 +82,9 @@
 			if( FALSE == $arrmixValidationErrors['result'] ){
 				$this->index( 'signin', $arrmixValidationErrors );
 			}else {
-					$this->load->model('setupfactory/ModelUserDetails','userdetails');				
+					$this->load->model('setupfactory/ModelUserDetails','userdetails');
+					$this->load->model('setupfactory/ModelProjectDetails','projectdetails');
+					$this->load->model('setupfactory/ModelMessageDetails','messagedetails');
 
 					$arrmixCookieRememberMeToken = array(
 					    'name'   => 'remember_me_token',
@@ -78,18 +95,31 @@
 						
 
 					$arrmixResult = $this->userdetails->signIn($arrmixCookieRememberMeToken);
+					
 
 					if( TRUE === is_array( $arrmixResult ) ) {
 
+						$arrmixProjectDetails = $this->projectdetails->getProjectDetailsByUserId($arrmixResult[0]->id);
+						$arrmixMessageDetails = $this->messagedetails->getMessageDetailsByUserId($arrmixResult[0]->id);
+						
+
 						set_cookie($arrmixCookieRememberMeToken); // set token
 
+						$arrmixDashBoardData = array();
 						$arrmixSessionData = array(
 						'user_id' => $arrmixResult[0]->id,
 						'email_address' => $arrmixResult[0]->email_address,
 						'first_name' => $arrmixResult[0]->first_name,
 						'last_name' => $arrmixResult[0]->last_name,
 						'user_name' => $arrmixResult[0]->user_name,
-						'password' => $arrmixResult[0]->password );
+						'password' => $arrmixResult[0]->password,
+						'about_you' => $arrmixResult[0]->about_you,
+						'view_count' => $arrmixResult[0]->view_count,
+						'download_count' => $arrmixResult[0]->download_count );
+
+						$arrmixDashBoardData ['arrmixDashBoardData']= $arrmixResult;
+						$arrmixDashBoardData ['arrmixProjectDetails']= $arrmixProjectDetails;
+						$arrmixDashBoardData ['arrmixMessageDetails']= $arrmixMessageDetails;
 
 						 $this->session->set_userdata( 'logged_in', $arrmixSessionData );
 
@@ -97,8 +127,6 @@
 						'profile_pic' => $arrmixResult[0]->profile_pic);
 
 						 $this->session->set_userdata( 'profile_pic', $arrmixSessionDataprofilepic );
-
-
 
 						if( 1 === (int)$_POST['remember_me_value'] ){
 							$arrmixCookieRememberMeUserName = array(
@@ -122,7 +150,7 @@
 							delete_cookie('entryn');
 						}
 
-						$this->load->view("setupfactory/viewDashboard", $arrmixSessionData);
+						$this->load->view("setupfactory/viewDashboard", $arrmixDashBoardData);
 
 					}else if( FALSE === $arrmixResult ) {
 

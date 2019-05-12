@@ -186,10 +186,13 @@ class ModelUserDetails extends CI_Model {
 
 			$condition = "user_name =" . "'" . $this->m_email_address . "' AND " . "password =" . "'" . $this->m_password . "' AND ". "email_address =" . "'" . $this->m_email_address . "'";			
 
-			$this->db->select('*');
+			$this->db->select('user_details.id,user_details.email_address, user_details.first_name, user_details.last_name, user_details.user_name, user_details.password, user_details.about_you, user_details.profile_pic, sum(user_views.view_count) AS view_count, user_resume.download_count');
 			$this->db->from('user_details');
-			$this->db->where($condition);
+			$this->db->join('user_views', 'user_details.id = user_views.user_details_id', 'left');
+			$this->db->join('user_resume', 'user_details.id = user_resume.user_details_id', 'left');
+			$this->db->where($condition);			
 			$query = $this->db->get();
+			//echo $this->db->last_query(); exit;
 
 			if (1 == $query->num_rows() ) {
 

@@ -10,3 +10,9 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/dashboard/dashboard-custom-style.css " type="text/css" media="screen" />
 <!-----for date picker---->
 <link href="<?php echo base_url();?>assets/styles/common/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+<!-----circle css---->
+<link href="<?php echo base_url();?>assets/styles/dashboard/progresscircle.css" rel="stylesheet" type="text/css" />
+
+<!----------flag icon css------------->
+<link rel="stylesheet" href="<?php echo base_url();?>assets/styles/common/flag-icon.min.css">

@@ -1,9 +1,9 @@
 .border-5 {
-    border:5px solid !important;
-    border-image-source: initial !important;
-    border-image-slice: initial !important;
-    border-image-width: initial !important;
-    border-image-outset: initial !important;
-    border-image-repeat: initial !important;
+    border:					5px solid !important;
+    border-image-source: 	initial !important;
+    border-image-slice: 	initial !important;
+    border-image-width: 	initial !important;
+    border-image-outset: 	initial !important;
+    border-image-repeat: 	initial !important;
 }
 

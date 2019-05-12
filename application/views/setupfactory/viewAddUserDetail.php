@@ -31,7 +31,7 @@ $this->load->view('setupfactory/common/viewSideBar');
 			</div>
 	<?php }?>
 	  		
-	  		<h3>MANAGE YOUR DETAIL</h3>			
+	  		<h3  class="text-center">MANAGE YOUR DETAIL</h3>			
 			
 				<?php 
 			
@@ -51,7 +51,8 @@ $this->load->view('setupfactory/common/viewSideBar');
 					    	<input type="file" id="file" class="custom-file-input" name="profile_pic" id="imageUpload" onchange="readURL(this)">
 					    	
 					    	<!---<img src="<?php echo $strPicSrc;?>" class="rounded-circle img-fluid sidebar-image custom-file-control  upload-label" style="height: 150px; width: 150px; margin:auto !important; padding:0px !important;" onmouseover="pointupload(this)" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Upload Picture" id="imagePreview">-->
-					    	<div class="rounded-circle img-fluid custom-file-control  upload-label profile-pic-div text-center" style=" background-image: url('<?php echo $strPicSrc;?>') !important;" onmouseover="pointupload(this)" onmouseout="pointout(this)" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Upload Picture" id="imagePreview" ><i class="fas fa-camera fa-2x rounded-circle profile-pic-upload-icon" style="" ></i></div>
+					    	<div class="rounded-circle img-fluid custom-file-control  upload-label profile-pic-div text-center" style=" background-image: url('<?php echo $strPicSrc;?>') !important;" onmouseover="pointupload(this)" onmouseout="pointout(this)" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Upload Picture" id="imagePreview" ><i class="fas fa-camera fa-2x rounded-circle profile-pic-upload-icon" style="" ></i>
+					    	</div>
 						</label>
 						<input type="hidden" name="profile_pic_name" value="<?php echo $profile_pic;?>"" id="hid_profile_pic_name">
 					</div>
@@ -110,7 +111,7 @@ $this->load->view('setupfactory/common/viewSideBar');
 				 <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
 					  <div class="form-group">
 					    <label for="txt_date_of_birth">Date of Birth</label>
-					    <input type="text" class="form-control" id="txt_date_of_birth" placeholder="dd/mm/yyyy" name="birth_date" value="<?php echo $birth_date;?>" required>
+					    <input type="text" class="form-control datepic" id="txt_date_of_birth" placeholder="dd/mm/yyyy" name="birth_date" value="<?php echo $birth_date;?>" required readonly>
 					  </div>
 
 					    <?php 
@@ -190,7 +191,12 @@ $this->load->view('setupfactory/common/viewSideBar');
 					      <label class="error message-fail form-control"><?php echo form_error('current_address');?></label>
 					  	<?php }?>
 					  <label class="float-right">
-				          <input id="chekaddress" name="chekaddress" type="checkbox"  onchange="checkaddress(this)"  <?php if (true == $same_addr){ echo 'checked'; } ?>> Current address is my Permenent address.
+					  	<div class="checkbox">
+						    <label>
+						      <input id="chekaddress" name="chekaddress" type="checkbox"  onchange="checkaddress(this)"  <?php if (true == $same_addr){ echo 'checked'; } ?>>
+						      Current address is my Permenent address.
+						    </label>
+						 </div>
 				          <input type="hidden" name="same_addr" id="hid_same_addr" value="<?php echo $same_addr;?>">
 				      </label>
 				 </div>

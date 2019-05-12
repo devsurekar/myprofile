@@ -15,7 +15,7 @@
 			</div>
 	<?php }?>
 
-	  		<h3>MANAGE PERSONAL DETAIL</h3>
+	  		<h3  class="text-center">MANAGE PERSONAL DETAIL</h3>
 	  		<?php 
 			
 		    $attributes = array('class' => 'card', 'id' => 'formAddpersonalDetails', 'name' => 'formAddpersonalDetails', 'style' => 'padding: 20px');
