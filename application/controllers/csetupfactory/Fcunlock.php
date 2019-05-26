@@ -22,13 +22,18 @@
 				$this->load->model('setupfactory/ModelDashBoard','dashboard');
 				$this->load->model('setupfactory/ModelProjectDetails','projectdetails');
 				$this->load->model('setupfactory/ModelMessageDetails','messagedetails');
+				$this->load->model('setupfactory/ModelUserViews','userviews');
 
 				$arrmixDashBoardData['arrmixDashBoardData'] = $this->dashboard->getDashBoardDetailsByUserId( $this->session->userdata['logged_in']['user_id'] );
 				$arrmixProjectDetails = $this->projectdetails->getProjectDetailsByUserId($this->session->userdata['logged_in']['user_id'] );
 				$arrmixMessageDetails = $this->messagedetails->getMessageDetailsByUserId($this->session->userdata['logged_in']['user_id'] );
+				//user views
+				$arrmixUserViews = $this->userviews->getUserViewDetails();
+				//user views
 
 				$arrmixDashBoardData ['arrmixProjectDetails']= $arrmixProjectDetails;
 				$arrmixDashBoardData ['arrmixMessageDetails']= $arrmixMessageDetails;
+				$arrmixDashBoardData ['arrmixUserViews']= $arrmixUserViews;
 
 				$this->load->view("setupfactory/viewDashboard", $arrmixDashBoardData);
 			}
@@ -85,6 +90,7 @@
 					$this->load->model('setupfactory/ModelUserDetails','userdetails');
 					$this->load->model('setupfactory/ModelProjectDetails','projectdetails');
 					$this->load->model('setupfactory/ModelMessageDetails','messagedetails');
+					$this->load->model('setupfactory/ModelUserViews','userviews');
 
 					$arrmixCookieRememberMeToken = array(
 					    'name'   => 'remember_me_token',
@@ -101,6 +107,10 @@
 
 						$arrmixProjectDetails = $this->projectdetails->getProjectDetailsByUserId($arrmixResult[0]->id);
 						$arrmixMessageDetails = $this->messagedetails->getMessageDetailsByUserId($arrmixResult[0]->id);
+						//user views
+						$result = $this->userviews->addUpdate($arrmixResult[0]->id);
+						$arrmixUserViews = $this->userviews->getUserViewDetails();
+						//user views
 						
 
 						set_cookie($arrmixCookieRememberMeToken); // set token
@@ -120,6 +130,7 @@
 						$arrmixDashBoardData ['arrmixDashBoardData']= $arrmixResult;
 						$arrmixDashBoardData ['arrmixProjectDetails']= $arrmixProjectDetails;
 						$arrmixDashBoardData ['arrmixMessageDetails']= $arrmixMessageDetails;
+						$arrmixDashBoardData ['arrmixUserViews']= $arrmixUserViews;
 
 						 $this->session->set_userdata( 'logged_in', $arrmixSessionData );
 

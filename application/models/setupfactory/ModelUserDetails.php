@@ -107,8 +107,6 @@ class ModelUserDetails extends CI_Model {
 
 				$strProfilePicName = $this->input->Post('profile_pic_name');
 
-				//echo isset( $strProfilePicName ); echo $strProfilePicName; exit;
-
 				if ( true == isset( $strProfilePicName ) && '' != $strProfilePicName ) {
 					
 						$this->m_profile_pic = $strProfilePicName;
@@ -191,8 +189,7 @@ class ModelUserDetails extends CI_Model {
 			$this->db->join('user_resume', 'user_details.id = user_resume.user_details_id', 'left');
 			$this->db->where($condition);			
 			$query = $this->db->get();
-			//echo $this->db->last_query(); exit;
-
+			
 			if (1 == $query->num_rows() ) {
 
 				$boolIsTrue = TRUE;	

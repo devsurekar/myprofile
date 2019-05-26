@@ -121,18 +121,17 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      <td><span class="flag-icon flag-icon-in"></span> India</td>
-			      <td class="text-right">437464</td>
-			    </tr>
-			    <tr>
-			      <td><span class="flag-icon flag-icon-gr"></span> Germany</td>
-			      <td class="text-right">5789</td>
-			    </tr>
-			    <tr>
-			      <td><span class="flag-icon flag-icon-us"></span> United States</td>
-			      <td class="text-right">9687</td>
-			    </tr>
+			  	<?php if( true == empty($arrmixUserViews)){ ?>
+			  		<p class="text-danger">Oops No views, Get up Promote yourself!</p>
+			  	<?php } else{
+			  		foreach ($arrmixUserViews as $key => $arrmixUserView) { ?>
+			  			<tr>
+					      <td><span class="flag-icon flag-icon-<?php echo $arrmixUserView->view_country_code;?>"></span> <?php echo $arrmixUserView->view_country;?></td>
+					      <td class="text-right"><?php echo $arrmixUserView->view_count;?></td>
+					    </tr>
+			  	<?php } 
+
+			  	} ?>
 			  </tbody>
 			</table>
           </div>
