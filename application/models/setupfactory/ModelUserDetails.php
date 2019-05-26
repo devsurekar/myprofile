@@ -114,14 +114,13 @@ class ModelUserDetails extends CI_Model {
 						$this->m_profile_pic = $strProfilePicName;
 					
 
-				} else if ( true == isset( $_FILES['profile_pic']['name'] ) ) {
-
+				} else if ( true == isset( $_FILES['profile_pic']['name'] ) && '' != $_FILES['profile_pic']['name'] ) {
 					
 					$ext = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
 					$this->m_profile_pic = base_url()."assets/images/common/userProfilePic_".$id.'.'.$ext;
 
 				} else {
-
+					
 					$this->m_profile_pic = NULL;
 				}
 

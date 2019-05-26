@@ -86,7 +86,7 @@ function addProjectSection(id){
 	$('#hid_row_count').val(intRowId);
 }
 
-function addActivitySection(id){ alert('ggg');
+function addActivitySection(id){
 	//<div class='row'><div class='col-sm-12 col-xs-12 col-md-6 col-lg-6'><div class='form-group '><div class='checkbox'><label><input type='checkbox' id='check_showonwebsite_"+intRowId+"' name='skillDetails["+intRowId+"][show_on_website]' checked > Show on website</label></div></div></div><div class='col-sm-12 col-xs-12 col-md-6 col-lg-6'><div class='form-group'><div class='checkbox'><label><input type='checkbox' id='check_showonresume_"+intRowId+"' name='skillDetails["+intRowId+"][show_on_resume]' checked > Show on resume</label></div></div></div></div>
 	
 	var intRowId = parseInt( $('#hid_row_count').val() )+1;

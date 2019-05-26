@@ -1,4 +1,4 @@
-<?php//include_once("application/views/setupfactory/common/viewTopHeader.php"); ?>
+<?php //include_once("application/views/setupfactory/common/viewTopHeader.php"); ?>
 
 <?php $this->load->view('setupfactory/common/viewTopHeader.php');?>
 <!-- Custom styles for this template -->
