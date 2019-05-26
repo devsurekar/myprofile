@@ -20,6 +20,7 @@ function submitEducationalDetails() {
 	}
 
 	var strEducationalDetails =JSON.stringify(arrmixEducationalData);
+	$('.se-pre-con').show();
 	jQuery.ajax({
 		type: "POST",
 		url: strUrl,
@@ -56,7 +57,10 @@ function submitEducationalDetails() {
                 $(".alert-danger").html(message);
 
               }
-		}
+		},
+      complete: function(){
+        $('.se-pre-con').hide();
+      }
 	});
 }
 
@@ -80,6 +84,7 @@ function submitSkillDetails() {
 	}
 
 	var strSkillDetails =JSON.stringify(arrmixSkillData);
+	$('.se-pre-con').show();
 	jQuery.ajax({
 		type: "POST",
 		url: strUrl,
@@ -116,7 +121,10 @@ function submitSkillDetails() {
                 $(".alert-danger").html(message);
 
               }
-		}
+		},
+      complete: function(){
+        $('.se-pre-con').hide();
+      }
 	});
 }
 
@@ -145,6 +153,7 @@ function submitCompanyDetails() {
 	}
 
 	var strComapnyDetails =JSON.stringify(arrmixCompanyData);
+	$('.se-pre-con').show();
 	jQuery.ajax({
 		type: "POST",
 		url: strUrl,
@@ -181,7 +190,10 @@ function submitCompanyDetails() {
                 $(".alert-danger").html(message);
 
               }
-		}
+		},
+      complete: function(){
+        $('.se-pre-con').hide();
+      }
 	});
 }
 
@@ -207,6 +219,7 @@ function submitProjectDetails() {
 	var strProjectDetails =JSON.stringify(arrmixProjectData);
 	//var person = prompt("Please enter your name", strProjectDetails);
 	//return;
+	$('.se-pre-con').show();
 	jQuery.ajax({
 		type: "POST",
 		url: strUrl,
@@ -243,7 +256,10 @@ function submitProjectDetails() {
                 $(".alert-danger").html(message);
 
               }
-		}
+		},
+      complete: function(){
+        $('.se-pre-con').hide();
+      }
 	});
 	
 }
@@ -270,6 +286,7 @@ function submitActivityDetails() {
 	var strActivityDetails =JSON.stringify(arrmixActivityData);
 	//var person = prompt("Please enter your name", strProjectDetails);
 	//return;
+	$('.se-pre-con').show();
 	jQuery.ajax({
 		type: "POST",
 		url: strUrl,
@@ -306,7 +323,10 @@ function submitActivityDetails() {
                 $(".alert-danger").html(message);
 
               }
-		}
+		},
+      complete: function(){
+        $('.se-pre-con').hide();
+      }
 	});
 	
 }
