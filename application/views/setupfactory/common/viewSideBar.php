@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/dashboard/dashboard-sidebar-style.css " type="text/css" media="screen" />
 <script type="text/javascript" src="<?php echo base_url();?>assets/scripts/dashboard/dashboard-sidebar-script.js" ></script>
 <BODY class="body-back-color">
+<div id="loading-gif" class="se-pre-con"></div>
 <!-- Use any element to open the sidenav -->
 <div class="fixed-top container-fluid" style="margin:0px; padding: 0px">
 	<button onclick="openNav()" type="button" class="btn btn-outline-primary border-0 float-left">
