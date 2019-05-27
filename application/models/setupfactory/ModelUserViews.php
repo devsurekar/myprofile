@@ -138,7 +138,7 @@ class ModelUserViews extends CI_Model {
 	public function getUserIpDetails(){
 
 		$ip = $this->getUserIpAddress();		
-		return unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip=70.114.164.59'));
+		return unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$ip));
 	}
 	
 }
