@@ -80,13 +80,12 @@
 
 		public function signIn() {
 
-
-
 			$arrmixValidationErrors = $this->validateReuiredSignIn();
 
 			if( FALSE == $arrmixValidationErrors['result'] ){
 				$this->index( 'signin', $arrmixValidationErrors );
-			}else {
+			}else 
+			{ 
 					$this->load->model('setupfactory/ModelUserDetails','userdetails');
 					$this->load->model('setupfactory/ModelProjectDetails','projectdetails');
 					$this->load->model('setupfactory/ModelMessageDetails','messagedetails');
@@ -103,7 +102,7 @@
 					$arrmixResult = $this->userdetails->signIn($arrmixCookieRememberMeToken);
 					
 
-					if( TRUE === is_array( $arrmixResult ) ) {
+					if( TRUE === is_array( $arrmixResult ) && true == isset( $arrmixResult[0]->id ) ) {
 
 						$arrmixProjectDetails = $this->projectdetails->getProjectDetailsByUserId($arrmixResult[0]->id);
 						$arrmixMessageDetails = $this->messagedetails->getMessageDetailsByUserId($arrmixResult[0]->id);
@@ -163,7 +162,7 @@
 
 						$this->load->view("setupfactory/viewDashboard", $arrmixDashBoardData);
 
-					}else if( FALSE === $arrmixResult ) {
+					}else if( FALSE === $arrmixResult || false == isset( $arrmixResult[0]->id) ) {
 
 						$this->session->set_flashdata('message', "Fail: User Name or Password not valid, Please try again!");
 						$this->session->set_flashdata('message_type', "fail");
