@@ -284,15 +284,11 @@ function submitActivityDetails() {
 	}
 
 	var strActivityDetails =JSON.stringify(arrmixActivityData);
-	//var person = prompt("Please enter your name", strProjectDetails);
-	//return;
 	$('.se-pre-con').show();
 	jQuery.ajax({
 		type: "POST",
 		url: strUrl,
-		dataType : 'json', // data type
-		//dataType:'dataString',
-		//data:$('#formAddEducationalDetails').serialize(),
+		dataType : 'json', 
 		data: {activity_details : strActivityDetails, delete_ids: $("#hid_delete").val()},
 		success: function(res) {
 
@@ -329,4 +325,95 @@ function submitActivityDetails() {
       }
 	});
 	
+}
+
+
+function ajaxrequest(strUrl,requestOf = 'req_delete_message', arrmixParameters = null) {
+
+	switch(requestOf) {
+	  case 'req_delete_message': 
+	  	if( null == arrmixParameters ) { alert('Please pass valid Parameters.'); return; }
+	   	var arrmixPostData = {user_details_id: $("#hid_user_details_id").val(),deletedid:arrmixParameters.deletedid};
+	    break;
+	  case 'req_reply_message':
+	  	if( null == arrmixParameters ) { alert('Please pass valid Parameters.'); return; }
+	    var arrmixPostData = {user_details_id: $("#hid_user_details_id").val(),messagereplyid:arrmixParameters.message_reply_id};
+	    break;
+	  case 'req_save_aboutme':
+	  	var arrmixPostData = {user_details_id: $("#hid_user_details_id").val(),straboutme:$("#txt_aboutMe").val()};
+	    break;
+	  default:
+	    alert('Invalid Request!');  return;
+	}
+    jQuery.ajax({
+    type: "POST",
+    url: strUrl,
+    dataType : 'json', // data type
+    data: arrmixPostData,
+    success: function(res) {
+      if($.isEmptyObject(res.error)) {
+
+              switch(requestOf) {
+			  case 'req_delete_message': 
+			  	if( null == arrmixParameters ) { alert('Please pass valid Parameters.'); return; }
+			   	if( arrmixParameters.deletedid ) { reloadMessageModel(deleted_ids); return; }
+			    break;
+			  case 'req_reply_message':
+			  	if( null == arrmixParameters ) { alert('Please pass valid Parameters.'); return; }			    
+			    break;
+			  case 'req_save_aboutme':
+			  	$('#p_about_me').html($('#txt_aboutMe').val());
+			  	$('#txt_aboutMe').val($('#p_about_me').html());				  
+	             alert(res.success);
+	              
+			    break;
+			  default:
+			    alert('Invalid Request!');  return;
+			}
+
+
+        } else{
+
+            var message = '';
+          	
+          	for (i in res.error) {
+				
+				$arrmixKeyMessage = res.error[i].split(':');		    				
+				message  =  message.concat($arrmixKeyMessage[1]);
+				}
+
+            alert(message);
+        }
+    }
+  });
+}
+
+function reloadMessageModel() {
+    jQuery.ajax({
+    type: "POST",
+    url: $('#formDashboard_recivedMessages').attr('action') ,
+    dataType : 'json',
+    data: {user_details_id: $("#hid_user_details_id").val(),reload_message:1},
+    success: function(res) {
+
+      if($.isEmptyObject(res.error)) {
+
+                 var strAccordionContent = '';
+                 for(var index = 0; index < res.length; index++){
+
+                    strAccordionContent += '<div class="card"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_'+ res[index].id +'" aria-expanded="true" aria-controls="collapse_'+ res[index].id+'"><div class="card-header" id="heading_'+ res[index].id+'"><h6 class="mb-0"> <i class="fas fa-envelope fa-x text-primary"></i> ' +res[index].msg_title+'</h6><i class="fas fa-trash-alt fa-1x float-right text-primary btn"  data-toggle="tooltip" data-placement="right" data-original-title="Delete" onclick="ajaxrequest(\''+ $('#formDashboard_recivedMessages').attr('action')+'/deletemessagedetailbyids\',' +res[index].id+',' + $("#hid_user_details_id").val()+')" ></i> <i class="fas fa-reply fa-1x float-right text-primary btn"  data-toggle="tooltip" data-placement="left" data-original-title="Reply"></i><span>From: ' +res[index].msg_email_id+ '</span></div></a><div id="collapse_'+ res[index].id+'" class="collapse" aria-labelledby="heading_'+ res[index].id+'" data-parent="#accordion"><div class="card-body">'+res[index].msg_message+'</div></div></div>';
+
+                 }
+                  
+                  $('#accordion').html('');
+                  $('#accordion').append(strAccordionContent);
+                  $('#lbl_msg_count').html(res.length);
+                  alert('Message Deleted successfully !');
+              } else{
+
+                  alert('Not able to delete Message !');
+
+              }
+    }
+  });
 }

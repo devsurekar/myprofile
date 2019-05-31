@@ -14,7 +14,7 @@
 			      
 			      </h6>
 			      <i class="fas fa-chevron-down fa-1x float-right text-primary btn"  data-toggle="tooltip" data-placement="left" data-original-title="See Message"></i>
-			      <i class="fas fa-trash-alt fa-1x float-right text-primary btn"  data-toggle="tooltip" data-placement="right" data-original-title="Delete" onclick="ajaxrequest('<?php echo base_url().'csetupfactory/fcusermessagedetailfactory/deletemessagedetailbyids';?>', <?php echo $arrmixMessageDetail->id;?>, <?php echo $arrmixMessageDetail->user_details_id;?>)" ></i>
+			      <i class="fas fa-trash-alt fa-1x float-right text-primary btn"  data-toggle="tooltip" data-placement="right" data-original-title="Delete" onclick="ajaxrequest('<?php echo base_url().'csetupfactory/fcusermessagedetailfactory/deletemessagedetailbyids';?>','req_delete_message', <?php echo '{deletedid:'.$arrmixMessageDetail->id.'}' ;?>)" ></i>
 			       <i class="fas fa-reply fa-1x float-right text-primary btn"  data-toggle="tooltip" data-placement="left" data-original-title="Reply"></i>
 			       <span>From: <?php echo $arrmixMessageDetail->msg_email_id;?>	</span>
 			    </div>

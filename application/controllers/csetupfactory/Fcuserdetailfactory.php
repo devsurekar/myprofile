@@ -190,5 +190,71 @@
 			    }
 			}
 
+
+			public function updateAboutMe()
+			{
+				if ( TRUE == checkSession() ) {
+
+					$this->load->library('form_validation');
+
+	 				$this->session->set_flashdata('controller', '');
+	 				$this->session->set_flashdata('controller', 'user_details');
+
+	 				$strAboutMe = $this->input->Post( 'straboutme' );
+					
+				 	if ( NULL != $strAboutMe ) {
+						$errors = array();
+						$strdiscription_check = $this->discription_check($strAboutMe);
+
+						if( true != $strdiscription_check ) {
+
+							$errors[] = "txt_aboutMe:".$strdiscription_check;
+
+						}
+					}
+
+					if(!empty(array_filter($errors))){	
+
+            			echo json_encode(['error'=>$errors]); exit;
+            		}
+
+            		$this->load->model('setupfactory/ModelUserDetails','userdetails');
+
+					$arrmixResult = $this->userdetails->updateAboutMe($this->session->userdata['logged_in']['user_id']);
+
+					if ( true == $arrmixResult ) {
+						$success[] = "Success: Update Successful !";
+						echo json_encode(['success'=>$success]); exit;
+					} else{
+						$errors[] = "Fail: Update Failed !";
+						echo json_encode(['error'=>$errors]); exit;
+					}
+
+				} else{
+					$this->session->set_flashdata('message', "Fail: Update Failed !");
+					$this->session->set_flashdata('message_type', 'fail'); 
+					redirect('csetupfactory','refresh');
+				}
+
+
+			}
+
+		public function discription_check($str)
+        {
+                if (!empty($str) && !preg_match('/^[0-9,a-z .,\-]+$/i',trim($str)))
+                {
+                        $message = "Enter valid Description!";
+                        return $message;
+                }
+                else if ( 250 < strlen($str) ) {
+
+                	 $message = "Maximum length of description should be less than 250 characters!";
+                        return $message;
+                }
+                else{
+                	return true;
+                }
+        }
+
 	}
 ?>

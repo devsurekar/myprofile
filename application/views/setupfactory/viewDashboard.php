@@ -16,9 +16,10 @@
 			<div style="" class="d-flex justify-content-center" id="div_dashboard_img">
 			  	<img src="<?php echo $strPicSrc;?>" class="rounded-circle img-fluid dashboard-image" style="">
 			</div> 
-			<h2>‘Hi’ <br>I am <?php echo $this->session->userdata['logged_in']['first_name'].' '.$this->session->userdata['logged_in']['last_name'];?></h2><i class="fas fa-edit fa-x float-right text-primary"  data-toggle="modal" data-target="#dashboardModel" data-whatever="About Me" style="cursor: pointer;"></i>
+			<h2>‘Hi’ <br>I am <?php echo $this->session->userdata['logged_in']['first_name'].' '.$this->session->userdata['logged_in']['last_name'];?></h2>
+			<i class="fas fa-edit fa-x float-right text-primary"  data-toggle="modal" data-target="#dashboardModel" data-whatever="About Me" style="cursor: pointer;"></i>
 			<h3>About Me</h3>
-			<p>
+			<p id="p_about_me">
 				<?php if( false == $arrmixDashBoardData ||  '' == $arrmixDashBoardData[0]->about_you ) { ?>
 					Your ‘About Me’ should convey who you are and what you’re doing, how you got there, and where you’re looking to go next. Use it to describe your credentials, expertise, and goals.
 				<?php } 
@@ -39,7 +40,7 @@
 					    <h6 class="card-subtitle mb-2 text-white">Total Views</h6>
 					    <i class="fas fa-eye fa-3x"></i>
 					    <h3 class="float-right"><?php if( false == isset($arrmixDashBoardData[0]->view_count)){echo 0;}else{ echo $arrmixDashBoardData[0]->view_count; } ?></h3>
-					    <input type="hidden" id="hid_user_views" name="hid_user_views" value='<?php echo base_url("csetupfactory/fcuseractivitydetailfactory/addUpdateActivityDetail");?>'>
+					    <input type="hidden" id="hid_user_views" name="hid_user_views" value=''>
 					  </div>
 					</div>
 				</div>
@@ -109,6 +110,7 @@
 						
 					} ?></textarea>
             <label class="float-right col-form-label" id="txt_aboutMe_count_message">250 remaining</label>
+             <input type="hidden" id="hid_about_me_url" name="hid_about_me_url" value='<?php echo base_url("csetupfactory/fcuserdetailfactory/updateAboutMe");?>'>
           </div>
         </form>
         <form id="formDashboard_totalViews" class="table-responsive">
@@ -203,7 +205,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btn-save">Save</button>
+        <button type="button" class="btn btn-primary btn-save" onclick="ajaxrequest('<?php echo base_url().'csetupfactory/fcuserdetailfactory/updateAboutMe';?>','req_save_aboutme')">Save</button>
       </div>
     </div>
   </div>
@@ -217,7 +219,3 @@
 		redirect('csetupfactory','refresh');
 	}
 ?>
-
-	
-
-

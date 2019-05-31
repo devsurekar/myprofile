@@ -49,7 +49,7 @@
       }
       else if('Total Views' == recipient){
 
-        ajaxrequest($('#hid_user_views').val());
+        //ajaxrequest($('#hid_user_views').val());
         
         modal.find('.modal-title').text(recipient).css('color','');
         modal.find('.modal-body').show();
@@ -132,59 +132,5 @@
              
 });
 
-function ajaxrequest(strUrl,deleted_ids = null, message_reply_id = null) {
-    jQuery.ajax({
-    type: "POST",
-    url: strUrl,
-    dataType : 'json', // data type
-    data: {user_details_id: $("#hid_user_details_id").val(),deletedid:deleted_ids,messagereplyid:message_reply_id},
-    success: function(res) {
-      if($.isEmptyObject(res.error)) {
-
-                if( null != deleted_ids ) {
-                  //alert('Message deleted successfully');
-                  reloadMessageModel(deleted_ids);
-              }
-
-              } else{
-
-                alert('Request fail !');
-
-              }
-    }
-  });
-}
-
-function reloadMessageModel() {
-    jQuery.ajax({
-    type: "POST",
-    url: $('#formDashboard_recivedMessages').attr('action') ,
-    dataType : 'json',
-    data: {user_details_id: $("#hid_user_details_id").val(),reload_message:1},
-    success: function(res) {
-
-      if($.isEmptyObject(res.error)) {
-
-                //if( null != deleted_ids ) {
-                 // var obj = JSON.parse(res);
-                 var strAccordionContent = '';
-                 for(var index = 0; index < res.length; index++){
-
-                    strAccordionContent += '<div class="card"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_'+ res[index].id +'" aria-expanded="true" aria-controls="collapse_'+ res[index].id+'"><div class="card-header" id="heading_'+ res[index].id+'"><h6 class="mb-0"> <i class="fas fa-envelope fa-x text-primary"></i> ' +res[index].msg_title+'</h6><i class="fas fa-trash-alt fa-1x float-right text-primary btn"  data-toggle="tooltip" data-placement="right" data-original-title="Delete" onclick="ajaxrequest(\''+ $('#formDashboard_recivedMessages').attr('action')+'/deletemessagedetailbyids\',' +res[index].id+',' + $("#hid_user_details_id").val()+')" ></i> <i class="fas fa-reply fa-1x float-right text-primary btn"  data-toggle="tooltip" data-placement="left" data-original-title="Reply"></i><span>From: ' +res[index].msg_email_id+ '</span></div></a><div id="collapse_'+ res[index].id+'" class="collapse" aria-labelledby="heading_'+ res[index].id+'" data-parent="#accordion"><div class="card-body">'+res[index].msg_message+'</div></div></div>';
-
-                 }
-                  
-                  $('#accordion').html('');
-                  $('#accordion').append(strAccordionContent);
-                  $('#lbl_msg_count').html(res.length);
-                  alert('Message Deleted successfully !');
-              } else{
-
-                  alert('Not able to delete Message !');
-
-              }
-    }
-  });
-}
 
 </script>

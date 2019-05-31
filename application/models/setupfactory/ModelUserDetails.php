@@ -262,6 +262,41 @@ class ModelUserDetails extends CI_Model {
 		}
 
 	}
+
+	public function updateAboutMe( $id=null ){
+
+		if( null != $id ){
+
+			$this->m_about_you 	= $this->input->Post( 'straboutme' );
+			$this->m_id 		= $id;
+			
+			$arrmixUserDetails = array(
+			    'id' 				=> $this->m_id,
+			    'about_you' 		=> $this->m_about_you
+		    );
+
+		    $arrmixUserDetailsUpdate[] = $arrmixUserDetails;
+
+		    $result = false;
+
+		    if( true == !empty( $arrmixUserDetailsUpdate ) ){
+
+				if( $this->db->update_batch('user_details',$arrmixUserDetailsUpdate,'id') ){ 
+					$result = true;
+
+				}else{
+
+					$result = true; // if no changes it is returning false
+				}
+			}
+
+			return $result;
+
+		}else{
+			echo 'Invalid request'; exit;
+		}
+
+	}
 	
 }
 
