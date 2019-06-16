@@ -36,11 +36,11 @@ class ModelEducationalDetails extends CI_Model {
 
 					if( 0 == $id ) {
 
-						$this->m_qualification 		= $arrmixEducationalData[$postedIndex]['qualification'];
-						$this->m_institute 			= $arrmixEducationalData[$postedIndex]['institute'];
-						$this->m_board 				= $arrmixEducationalData[$postedIndex]['board'];
-						$this->m_passing_year 		= $arrmixEducationalData[$postedIndex]['passing_year'];
-						$this->m_percentage 		= $arrmixEducationalData[$postedIndex]['percentage'];
+						$this->m_qualification 		= trim($arrmixEducationalData[$postedIndex]['qualification']);
+						$this->m_institute 			= trim($arrmixEducationalData[$postedIndex]['institute']);
+						$this->m_board 				= trim($arrmixEducationalData[$postedIndex]['board']);
+						$this->m_passing_year 		= trim($arrmixEducationalData[$postedIndex]['passing_year']);
+						$this->m_percentage 		= trim($arrmixEducationalData[$postedIndex]['percentage']);
 						$this->m_user_details_id 	= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entered_date 		= date('Y-m-d H:i:s');
 						$this->m_entered_by 		= $this->session->userdata['logged_in']['user_id'];
@@ -65,11 +65,11 @@ class ModelEducationalDetails extends CI_Model {
 					else if($id != null) {
 
 						$this->m_id = $id;
-						$this->m_qualification 		= $arrmixEducationalData[$postedIndex]['qualification'];
-						$this->m_institute 			= $arrmixEducationalData[$postedIndex]['institute'];
-						$this->m_board 				= $arrmixEducationalData[$postedIndex]['board'];
-						$this->m_passing_year 		= $arrmixEducationalData[$postedIndex]['passing_year'];
-						$this->m_percentage 		= $arrmixEducationalData[$postedIndex]['percentage'];
+						$this->m_qualification 		= trim($arrmixEducationalData[$postedIndex]['qualification']);
+						$this->m_institute 			= trim($arrmixEducationalData[$postedIndex]['institute']);
+						$this->m_board 				= trim($arrmixEducationalData[$postedIndex]['board']);
+						$this->m_passing_year 		= trim($arrmixEducationalData[$postedIndex]['passing_year']);
+						$this->m_percentage 		= trim($arrmixEducationalData[$postedIndex]['percentage']);
 						$this->m_user_details_id 	= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entered_date 		= date('Y-m-d H:i:s');
 						$this->m_entered_by 		= $this->session->userdata['logged_in']['user_id'];

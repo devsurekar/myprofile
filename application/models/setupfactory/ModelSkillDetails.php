@@ -37,9 +37,9 @@ class ModelSkillDetails extends CI_Model {
 
 					if( 0 == $id ) {
 
-						$this->m_skill 				= $arrmixSkillData[$postedIndex]['skill'];
-						$this->m_version 			= $arrmixSkillData[$postedIndex]['version'];
-						$this->m_exprience 			= $arrmixSkillData[$postedIndex]['exprience'];
+						$this->m_skill 				= trim($arrmixSkillData[$postedIndex]['skill']);
+						$this->m_version 			= trim($arrmixSkillData[$postedIndex]['version']);
+						$this->m_exprience 			= trim($arrmixSkillData[$postedIndex]['exprience']);
 						$this->m_user_details_id 	= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entered_date 		= date('Y-m-d H:i:s');
 						$this->m_entered_by 		= $this->session->userdata['logged_in']['user_id'];
@@ -63,9 +63,9 @@ class ModelSkillDetails extends CI_Model {
 					else if($id != null) {
 
 						$this->m_id 				= $id;
-						$this->m_skill 				= $arrmixSkillData[$postedIndex]['skill'];
-						$this->m_version 			= $arrmixSkillData[$postedIndex]['version'];
-						$this->m_exprience 			= $arrmixSkillData[$postedIndex]['exprience'];
+						$this->m_skill 				= trim($arrmixSkillData[$postedIndex]['skill']);
+						$this->m_version 			= trim($arrmixSkillData[$postedIndex]['version']);
+						$this->m_exprience 			= trim($arrmixSkillData[$postedIndex]['exprience']);
 						$this->m_user_details_id 	= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entered_date 		= date('Y-m-d H:i:s');
 						$this->m_entered_by 		= $this->session->userdata['logged_in']['user_id'];

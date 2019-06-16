@@ -47,18 +47,18 @@ class ModelProjectDetails extends CI_Model {
 
 					if( 0 == $id ) {
 
-						$this->m_project_type 			= $arrmixProjectData[$postedIndex]['project_type'];
-						$this->m_project_name 			= $arrmixProjectData[$postedIndex]['project_name'];
-						$this->m_degree_name 			= $arrmixProjectData[$postedIndex]['degree_name'];
-						$this->m_technology 			= $arrmixProjectData[$postedIndex]['technology'];
-						$this->m_domain					= $arrmixProjectData[$postedIndex]['domain'];
-						$this->m_team_size 				= $arrmixProjectData[$postedIndex]['team_size'];
-						$this->m_duration 				= $arrmixProjectData[$postedIndex]['duration'];
-						$this->m_responsibility 		= $arrmixProjectData[$postedIndex]['responsibility'];
-						$this->m_contribution 			= $arrmixProjectData[$postedIndex]['contribution'];
-						$this->m_remark 				= $arrmixProjectData[$postedIndex]['remark'];
-						$this->m_project_discription 	= $arrmixProjectData[$postedIndex]['project_description'];
-						$this->m_project_link 			= $arrmixProjectData[$postedIndex]['project_link'];
+						$this->m_project_type 			= trim($arrmixProjectData[$postedIndex]['project_type']);
+						$this->m_project_name 			= trim($arrmixProjectData[$postedIndex]['project_name']);
+						$this->m_degree_name 			= trim($arrmixProjectData[$postedIndex]['degree_name']);
+						$this->m_technology 			= trim($arrmixProjectData[$postedIndex]['technology']);
+						$this->m_domain					= trim($arrmixProjectData[$postedIndex]['domain']);
+						$this->m_team_size 				= trim($arrmixProjectData[$postedIndex]['team_size']);
+						$this->m_duration 				= trim($arrmixProjectData[$postedIndex]['duration']);
+						$this->m_responsibility 		= trim($arrmixProjectData[$postedIndex]['responsibility']);
+						$this->m_contribution 			= trim($arrmixProjectData[$postedIndex]['contribution']);
+						$this->m_remark 				= trim($arrmixProjectData[$postedIndex]['remark']);
+						$this->m_project_discription 	= trim($arrmixProjectData[$postedIndex]['project_description']);
+						$this->m_project_link 			= trim($arrmixProjectData[$postedIndex]['project_link']);
 						$this->m_user_details_id 		= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entry_date 			= date('Y-m-d H:i:s');
 						$this->m_entry_by 				= $this->session->userdata['logged_in']['user_id'];
@@ -91,18 +91,18 @@ class ModelProjectDetails extends CI_Model {
 					else if($id != null) {
 
 						$this->m_id 					= $id;
-						$this->m_project_type 			= $arrmixProjectData[$postedIndex]['project_type'];
-						$this->m_project_name 			= $arrmixProjectData[$postedIndex]['project_name'];
-						$this->m_degree_name 			= $arrmixProjectData[$postedIndex]['degree_name'];
-						$this->m_technology 			= $arrmixProjectData[$postedIndex]['technology'];
-						$this->m_domain					= $arrmixProjectData[$postedIndex]['domain'];
-						$this->m_team_size 				= $arrmixProjectData[$postedIndex]['team_size'];
-						$this->m_duration 				= $arrmixProjectData[$postedIndex]['duration'];
-						$this->m_responsibility 		= $arrmixProjectData[$postedIndex]['responsibility'];
-						$this->m_contribution 			= $arrmixProjectData[$postedIndex]['contribution'];
-						$this->m_remark 				= $arrmixProjectData[$postedIndex]['remark'];
-						$this->m_project_discription	= $arrmixProjectData[$postedIndex]['project_description'];
-						$this->m_project_link 			= $arrmixProjectData[$postedIndex]['project_link'];
+						$this->m_project_type 			= trim($arrmixProjectData[$postedIndex]['project_type']);
+						$this->m_project_name 			= trim($arrmixProjectData[$postedIndex]['project_name']);
+						$this->m_degree_name 			= trim($arrmixProjectData[$postedIndex]['degree_name']);
+						$this->m_technology 			= trim($arrmixProjectData[$postedIndex]['technology']);
+						$this->m_domain					= trim($arrmixProjectData[$postedIndex]['domain']);
+						$this->m_team_size 				= trim($arrmixProjectData[$postedIndex]['team_size']);
+						$this->m_duration 				= trim($arrmixProjectData[$postedIndex]['duration']);
+						$this->m_responsibility 		= trim($arrmixProjectData[$postedIndex]['responsibility']);
+						$this->m_contribution 			= trim($arrmixProjectData[$postedIndex]['contribution']);
+						$this->m_remark 				= trim($arrmixProjectData[$postedIndex]['remark']);
+						$this->m_project_discription	= trim($arrmixProjectData[$postedIndex]['project_description']);
+						$this->m_project_link 			= trim($arrmixProjectData[$postedIndex]['project_link']);
 						$this->m_user_details_id 		= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entry_date 			= date('Y-m-d H:i:s');
 						$this->m_entry_by 				= $this->session->userdata['logged_in']['user_id'];

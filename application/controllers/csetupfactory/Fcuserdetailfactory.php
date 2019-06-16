@@ -26,26 +26,11 @@
 			
 			if ( TRUE == checkSession() && true == isset( $_POST['first_name'] ) && true == isset( $_POST['email_address'] ) ) {
 
-				//$this->form_validation->set_rules('first_name', 'First Name', 'required|max_length[50]|alpha');
-
-				//$this->form_validation->set_rules('last_name', 'Last Name', 'required|max_length[50]|alpha');
 
 				if( $_POST['email_address'] != $this->session->userdata['logged_in']['email_address'] ) {
 					$this->form_validation->set_rules('email_address', 'Email', 'required|is_unique[user_details.email_address]|max_length[50]|valid_email');
 				}
  
-				//$this->form_validation->set_rules('middle_name', 'Middle Name', 'max_length[50]|alpha');
-				//$this->form_validation->set_rules('gender', 'Gender', 'required|max_length[1]|alpha');
-				//$this->form_validation->set_rules('contact_no1', 'Primary Contact Number', 'required|max_length[10]|numeric');
-				//$this->form_validation->set_rules('contact_no2', 'Secondary Contact Number', 'max_length[10]|numeric');
-				//$this->form_validation->set_rules('current_address', 'Current Address', 'required|max_length[200]|alpha_numeric_spaces');
-				//$this->form_validation->set_rules('per_address', 'permanent Address', 'required|max_length[200]|alpha_numeric_spaces');
-				//$this->form_validation->set_rules('city', 'City', 'max_length[50]|alpha');
-				//$this->form_validation->set_rules('state', 'State', 'max_length[50]|alpha');
-				//$this->form_validation->set_rules('country', 'Country', 'max_length[50]|alpha');
-				//$this->form_validation->set_rules('birth_date','Date of Birth','required|callback_checkDateFormat'); 
-				//$this->form_validation->set_rules('facebook_link', 'Facebook Link', 'trim|valid_url');
-				
  				$this->load->library('form_validation');
  				$this->session->set_flashdata('controller', '');
  				$this->session->set_flashdata('controller', 'user_details');
@@ -200,9 +185,9 @@
 	 				$this->session->set_flashdata('controller', '');
 	 				$this->session->set_flashdata('controller', 'user_details');
 
-	 				$strAboutMe = $this->input->Post( 'straboutme' );
+	 				$strAboutMe = trim($this->input->Post( 'straboutme' ));
 					
-				 	if ( NULL != $strAboutMe ) {
+				 	if ( NULL != $strAboutMe ||  '' != $strAboutMe) {
 						$errors = array();
 						$strdiscription_check = $this->discription_check($strAboutMe);
 
@@ -211,6 +196,8 @@
 							$errors[] = "txt_aboutMe:".$strdiscription_check;
 
 						}
+					} else{
+						$errors[] = "txt_aboutMe:Enter valid Description!";
 					}
 
 					if(!empty(array_filter($errors))){	

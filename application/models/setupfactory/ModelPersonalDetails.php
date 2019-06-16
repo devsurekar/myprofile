@@ -25,9 +25,9 @@ class ModelPersonalDetails extends CI_Model {
 			if( null == $id ) {
 
 				$this->m_marital_status 	= $this->input->Post('marital_status');
-				$this->m_hobby 				= $this->input->Post('hobby');
-				$this->m_strenth 			= $this->input->Post('strenth');
-				$this->m_weaknes 			= $this->input->Post('weaknes');
+				$this->m_hobby 				= trim($this->input->Post('hobby'));
+				$this->m_strenth 			= trim($this->input->Post('strenth'));
+				$this->m_weaknes 			= trim($this->input->Post('weaknes'));
 				$this->m_user_details__id 	= $this->session->userdata['logged_in']['user_id'];
 				$this->m_entered_date 		= date('Y-m-d H:i:s');
 				$this->m_entered_by 		= $this->session->userdata['logged_in']['user_id'];
@@ -53,9 +53,9 @@ class ModelPersonalDetails extends CI_Model {
 			else if($id != null) {
 
 				$this->m_marital_status 	= $this->input->Post('marital_status');
-				$this->m_hobby 				= $this->input->Post('hobby');
-				$this->m_strenth 			= $this->input->Post('strenth');
-				$this->m_weaknes 			= $this->input->Post('weaknes');
+				$this->m_hobby 				= trim($this->input->Post('hobby'));
+				$this->m_strenth 			= trim($this->input->Post('strenth'));
+				$this->m_weaknes 			= trim($this->input->Post('weaknes'));
 				$this->m_user_details__id 	= $this->session->userdata['logged_in']['user_id'];
 				$this->m_entered_date 		= date('Y-m-d H:i:s');
 				$this->m_entered_by 		= $this->session->userdata['logged_in']['user_id'];

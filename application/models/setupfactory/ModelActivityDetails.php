@@ -33,9 +33,9 @@ class ModelActivityDetails extends CI_Model {
 
 					if( 0 == $id ) {
 
-						$this->m_discription 				= $arrmixActivityData[$postedIndex]['discription'];
-						$this->m_heading 			= $arrmixActivityData[$postedIndex]['heading'];
-						$this->m_user_details_id 	= $this->session->userdata['logged_in']['user_id'];
+						$this->m_discription 				= trim($arrmixActivityData[$postedIndex]['discription']);
+						$this->m_heading 			= trim($arrmixActivityData[$postedIndex]['heading']);
+						$this->m_user_details_id 	= trim($this->session->userdata['logged_in']['user_id']);
 						$this->m_entered_date 		= date('Y-m-d H:i:s');
 						$this->m_entered_by 		= $this->session->userdata['logged_in']['user_id'];
 						$this->m_show_on_website 		= $arrmixActivityData[$postedIndex]['show_on_website'];
@@ -57,8 +57,8 @@ class ModelActivityDetails extends CI_Model {
 					else if($id != null) {
 
 						$this->m_id 				= $id;
-						$this->m_discription 				= $arrmixActivityData[$postedIndex]['discription'];
-						$this->m_heading 			= $arrmixActivityData[$postedIndex]['heading'];
+						$this->m_discription 				= trim($arrmixActivityData[$postedIndex]['discription']);
+						$this->m_heading 			= trim($arrmixActivityData[$postedIndex]['heading']);
 						$this->m_user_details_id 	= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entered_date 		= date('Y-m-d H:i:s');
 						$this->m_entered_by 		= $this->session->userdata['logged_in']['user_id'];

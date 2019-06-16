@@ -38,12 +38,12 @@ class ModelCompanyDetails extends CI_Model {
 
 					if( 0 == $id ) {
 
-						$this->m_comp_name 				= $arrmixCompanyData[$postedIndex]['comp_name'];
-						$this->m_city 					= $arrmixCompanyData[$postedIndex]['city'];
-						$this->m_join_date 				= $arrmixCompanyData[$postedIndex]['join_date'];
-						$this->m_leaving_date 			= $arrmixCompanyData[$postedIndex]['leaving_date'];
-						$this->m_designation 			= $arrmixCompanyData[$postedIndex]['designation'];
-						$this->m_country 				= $arrmixCompanyData[$postedIndex]['country'];
+						$this->m_comp_name 				= trim($arrmixCompanyData[$postedIndex]['comp_name']);
+						$this->m_city 					= trim($arrmixCompanyData[$postedIndex]['city']);
+						$this->m_join_date 				= trim($arrmixCompanyData[$postedIndex]['join_date']);
+						$this->m_leaving_date 			= trim($arrmixCompanyData[$postedIndex]['leaving_date']);
+						$this->m_designation 			= trim($arrmixCompanyData[$postedIndex]['designation']);
+						$this->m_country 				= trim($arrmixCompanyData[$postedIndex]['country']);
 						$this->m_user_details_id 		= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entry_date 			= date('Y-m-d H:i:s');
 						$this->m_entry_by 				= $this->session->userdata['logged_in']['user_id'];
@@ -72,12 +72,12 @@ class ModelCompanyDetails extends CI_Model {
 					else if($id != null) {
 
 						$this->m_id 					= $id;
-						$this->m_comp_name 				= $arrmixCompanyData[$postedIndex]['comp_name'];
-						$this->m_city 					= $arrmixCompanyData[$postedIndex]['city'];
-						$this->m_join_date 				= $arrmixCompanyData[$postedIndex]['join_date'];
-						$this->m_leaving_date 			= $arrmixCompanyData[$postedIndex]['leaving_date'];
-						$this->m_designation 			= $arrmixCompanyData[$postedIndex]['designation'];
-						$this->m_country 				= $arrmixCompanyData[$postedIndex]['country'];
+						$this->m_comp_name 				= trim($arrmixCompanyData[$postedIndex]['comp_name']);
+						$this->m_city 					= trim($arrmixCompanyData[$postedIndex]['city']);
+						$this->m_join_date 				= trim($arrmixCompanyData[$postedIndex]['join_date']);
+						$this->m_leaving_date 			= trim($arrmixCompanyData[$postedIndex]['leaving_date']);
+						$this->m_designation 			= trim($arrmixCompanyData[$postedIndex]['designation']);
+						$this->m_country 				= trim($arrmixCompanyData[$postedIndex]['country']);
 						$this->m_user_details_id 		= $this->session->userdata['logged_in']['user_id'];
 						$this->m_entry_date 			= date('Y-m-d H:i:s');
 						$this->m_entry_by 				= $this->session->userdata['logged_in']['user_id'];

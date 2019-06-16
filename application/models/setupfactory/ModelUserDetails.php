@@ -45,10 +45,10 @@ class ModelUserDetails extends CI_Model {
 
 			if($id == null) {
 
-				$this->m_first_name = $this->input->Post('first_name');
-				$this->m_last_name = $this->input->Post('last_name');
-				$this->m_email_address = $this->input->Post('email_address');
-				$this->m_password = $this->input->Post('password');
+				$this->m_first_name = trim($this->input->Post('first_name'));
+				$this->m_last_name = trim($this->input->Post('last_name'));
+				$this->m_email_address = trim($this->input->Post('email_address'));
+				$this->m_password = trim($this->input->Post('password'));
 				$this->m_entered_date = date('Y-m-d H:i:s');
 				$arrmixUserDetails = array(
 				    'user_name' => $this->m_email_address,
@@ -84,28 +84,28 @@ class ModelUserDetails extends CI_Model {
 			}
 			else if($id != null) {
 
-				$this->m_first_name 		= $this->input->Post('first_name');
-				$this->m_middle_name 		= $this->input->Post('middle_name');
-				$this->m_last_name 			= $this->input->Post('last_name');
-				$this->m_email_address 		= $this->input->Post('email_address');
+				$this->m_first_name 		= trim($this->input->Post('first_name'));
+				$this->m_middle_name 		= trim($this->input->Post('middle_name'));
+				$this->m_last_name 			= trim($this->input->Post('last_name'));
+				$this->m_email_address 		= trim($this->input->Post('email_address'));
 				$this->m_birth_date 		= $this->input->Post('birth_date');
 				$this->m_gender 			= $this->input->Post('gender');
-				$this->m_contact_no1 		= $this->input->Post('contact_no1');
-				$this->m_contact_no2 		= $this->input->Post('contact_no2');
-				$this->m_current_address 	= $this->input->Post('current_address');
-				$this->m_same_addr			= $this->input->Post('same_addr');
-				$this->m_per_address 		= $this->input->Post('per_address');
-				$this->m_city 				= $this->input->Post('city');
-				$this->m_pincode 			= $this->input->Post('pincode');
-				$this->m_state 				= $this->input->Post('state');
-				$this->m_country 			= $this->input->Post('country');
-				$this->m_facebook_link 		= $this->input->Post('facebook_link');
-				$this->m_linkedin_link 		= $this->input->Post('linkedin_link');
-				$this->m_twitter_link 		= $this->input->Post('twitter_link');
-				$this->m_entered_by 		= $this->input->Post('entered_by');				
+				$this->m_contact_no1 		= trim($this->input->Post('contact_no1'));
+				$this->m_contact_no2 		= trim($this->input->Post('contact_no2'));
+				$this->m_current_address 	= trim($this->input->Post('current_address'));
+				$this->m_same_addr			= trim($this->input->Post('same_addr'));
+				$this->m_per_address 		= trim($this->input->Post('per_address'));
+				$this->m_city 				= trim($this->input->Post('city'));
+				$this->m_pincode 			= trim($this->input->Post('pincode'));
+				$this->m_state 				= trim($this->input->Post('state'));
+				$this->m_country 			= trim($this->input->Post('country'));
+				$this->m_facebook_link 		= trim($this->input->Post('facebook_link'));
+				$this->m_linkedin_link 		= trim($this->input->Post('linkedin_link'));
+				$this->m_twitter_link 		= trim($this->input->Post('twitter_link'));
+				$this->m_entered_by 		= trim($this->input->Post('entered_by'));				
 				$this->m_entered_date 		= date('Y-m-d H:i:s');
 
-				$strProfilePicName = $this->input->Post('profile_pic_name');
+				$strProfilePicName = trim($this->input->Post('profile_pic_name'));
 
 				if ( true == isset( $strProfilePicName ) && '' != $strProfilePicName ) {
 					
@@ -178,8 +178,8 @@ class ModelUserDetails extends CI_Model {
 
 			
 
-			$this->m_email_address = $this->input->Post('user_name');
-			$this->m_password = $this->input->Post('password');	
+			$this->m_email_address 	= trim($this->input->Post('user_name'));
+			$this->m_password 		= trim($this->input->Post('password'));	
 
 			$condition = "user_name =" . "'" . $this->m_email_address . "' AND " . "password =" . "'" . $this->m_password . "' AND ". "email_address =" . "'" . $this->m_email_address . "'";			
 
@@ -267,7 +267,7 @@ class ModelUserDetails extends CI_Model {
 
 		if( null != $id ){
 
-			$this->m_about_you 	= $this->input->Post( 'straboutme' );
+			$this->m_about_you 	= trim($this->input->Post( 'straboutme' ));
 			$this->m_id 		= $id;
 			
 			$arrmixUserDetails = array(
